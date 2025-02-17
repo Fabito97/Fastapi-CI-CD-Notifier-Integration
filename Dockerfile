@@ -1,14 +1,18 @@
+# Use a lightweight Python image
 FROM python:3.9-slim
 
-# Install dependencies
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Set working directory
+WORKDIR /app
 
-# Copy app code to container
-COPY . /app/
+# Copy and install dependencies first (improves caching)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the app files
+COPY . .
 
 # Expose port
 EXPOSE 8000
 
-# Run the app with uvicorn
+# Run the app
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
