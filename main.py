@@ -108,10 +108,8 @@ async def send_message(payload: NotifyPayload, background_tasks: BackgroundTasks
    
 
     message = {
-        "text": f"🔔 *{payload.username} Deployment Notification*\n"
-                f"📂 *Message:* {payload.message}\n"
-                f"🚀 *Status:* {payload.status}\n"
-                f"🔖 *Event:* {payload.event_name}"
+        "text": f"🔔 *CI/CD Deployment Notification*\n"
+                f"📂 *Message:* {payload.message}"                
     }
     
     # Process Slack notification in the background
