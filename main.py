@@ -17,7 +17,6 @@ class Setting(BaseModel):
 
 class NotifyPayload(BaseModel):
     channel_id: str
-    return_url: str
     settings: List[Setting]
     message: str  # Updated for Telex message
     username: str  # Updated for Telex username
@@ -61,22 +60,13 @@ def get_integration_json(request: Request):
                 "app_url": base_url,
                 "background_color": "#fff",
             },
-            "integration_category": "DevOps & CI/CD",
+            "is_active": True,            
             "integration_type": "output",
-            "is_active": False,
-            "output": [
-
-            ],
             "key_features": [
                 "- provides notification from ci/cd operation",
                 "- sends the notification to your slack channel"
-            ],
-            "permissions": {
-                "monitoring_user": {
-                    "always_online": True,
-                    "display_name": "CI/CD Notifier"
-                }
-            },
+            ],           
+            "integration_category": "DevOps & CI/CD",
             "author": "Fabian Muoghalu",
             "website": base_url,
             "settings": [
