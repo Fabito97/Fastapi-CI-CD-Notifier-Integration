@@ -16,13 +16,9 @@ class Setting(BaseModel):
     default: str
 
 class NotifyPayload(BaseModel):
-    channel_id: str
     settings: List[Setting]
-    message: str  # Updated for Telex message
-    username: str  # Updated for Telex username
-    event_name: str  # Updated for Telex event_name
-    status: str  # Updated for Telex status
-
+    message: str  
+   
 
 Slack_Webhook_Url = "https://hooks.slack.com/services/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"
 
